@@ -1,8 +1,8 @@
-📢Converting the code to `C & C++` is ongoing.
+📢 Converting the code to `C & C++` is ongoing.
 <br>
-⚡The engine is progressing at a high pace with great energy
+⚡ The engine is progressing at a high pace with great energy
 <br>
-ℹ️ current version: `1.0`
+ℹ️ Current version: `1.0`
 
 # ray_engine
 ray_engine is a fresh, innovative graphics library designed to be the **easiest**, **most enjoyable**, and **highly performant** tool for developers. Whether you're a game developer, software designer, or machine learning enthusiast, ray_engine offers versatility and power to bring your ideas to life effortlessly.
