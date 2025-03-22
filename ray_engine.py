@@ -1,4 +1,4 @@
-# Main Developer: Esmail Jamshidiasl (NNE)
+# Main Developer: Esmail Jamshidiasl (call me NNE)
 # Github: https://github.com/ejamshidiasl/ray_engine
 # License: MIT
 
