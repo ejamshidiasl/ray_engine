@@ -217,7 +217,7 @@ class Scene:
         """Update all nodes and other stuf in the scene."""
 
         for tween in self.tweens:
-            self.update_tween(tween)
+            self._update_tween(tween)
 
         for node in self.nodes:
             node.update(delta_time)
@@ -335,14 +335,14 @@ class Scene:
         node.uuid = data["uuid"]
         return node
 
-    def set_attribute(self, node: Node, attribute_path, value):
+    def _set_attribute(self, node: Node, attribute_path, value):
         attributes = attribute_path.split(".")
         target = node
         for attr in attributes[:-1]:
             target = getattr(target, attr)
         setattr(target, attributes[-1], value)
 
-    def get_attribute(self, node: Node, attribute_path):
+    def _get_attribute(self, node: Node, attribute_path):
         attributes = attribute_path.split(".")
         value = node
         for attr in attributes:
@@ -350,7 +350,7 @@ class Scene:
         return value
 
     def add_tween(self, node: Node, what=None, to_val: float = 1, step: float = 0.1, on_done=None):
-        value = self.get_attribute(node, what)
+        value = self._get_attribute(node, what)
 
         minus = to_val - value
         if minus > 0:
@@ -370,12 +370,12 @@ class Scene:
                 "step": step
             })
 
-    def remove_tween(self, tween):
+    def _remove_tween(self, tween):
         if tween in self.tweens:
             self.tweens.remove(tween)
 
-    def update_tween(self, tween):
-        value = self.get_attribute(tween["node"], tween["what"])
+    def _update_tween(self, tween):
+        value = self._get_attribute(tween["node"], tween["what"])
         sum = value + tween["step"]
         new_value = sum
 
@@ -383,9 +383,9 @@ class Scene:
             new_value = tween["to_val"]
             if tween["on_done"]:
                 tween["on_done"](tween["node"])
-            self.remove_tween(tween)
+            self._remove_tween(tween)
 
-        self.set_attribute(tween["node"], tween["what"], new_value)
+        self._set_attribute(tween["node"], tween["what"], new_value)
 
 
 class DrawFuncs:
