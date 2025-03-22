@@ -48,6 +48,9 @@ clone the repository and include `ray_engine.py` file in your project.
 - **To use in C,C++ and other Languages**:
   - TODO
 
+## Classes & Functions (Cheatsheet)
+Look at [this (cheatsheet.md)](cheatsheet.md) link. 
+
 ## Example
 ```python
 from ray_engine import *
@@ -120,9 +123,6 @@ while not window_should_close():
 
 close_window()
 ```
-
-## Functions & Usage
-TODO
 
 ## Custom Draw Functions
 Currently, in version `1.1`, we have 4 drawing functions: `draw_rectangle`, `draw_circle`, `draw_line`, `draw_texture`. More functions will be added soon. Meanwhile, you can create custom functions as follows:

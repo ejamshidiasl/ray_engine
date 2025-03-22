@@ -1,2 +1,5 @@
 # Ignore the `__pycache__` directory
 __pycache__/
+
+# Ignore the `nne_tools` directory
+nne_tools/
