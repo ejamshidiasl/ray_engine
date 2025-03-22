@@ -31,7 +31,7 @@ ray_engine is a fresh, innovative graphics library designed to be the **easiest*
     - Functions for forward movement, look-at behavior, follow position and transitions.
 
 - **Tween System**:
-    - Add tween to any variable in a node to animate it. (now just float tween but soon other types will be added)
+    - Easy to use tween system.
 
 - **Extensibility**:
     - Easily register new draw or update functions.

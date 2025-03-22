@@ -3,7 +3,6 @@
 # License: MIT
 
 
-from hmac import new
 from pyray import *
 import math
 import json
@@ -350,32 +349,43 @@ class Scene:
             value = getattr(value, attr)
         return value
 
-    def add_tween_float(self, node: Node, what=None, to_val: float = 1, step: float = 0.1, on_done=None):
-        self.tweens.append({
-            "uid": str(uuid.uuid4()),
-            "type": "float",
-            "node": node,
-            "what": what,
-            "on_done": on_done,
-            "to_val": to_val,
-            "step": step
-        })
+    def add_tween(self, node: Node, what=None, to_val: float = 1, step: float = 0.1, on_done=None):
+        value = self.get_attribute(node, what)
+
+        minus = to_val - value
+        if minus > 0:
+            is_inc = True
+            step = abs(step)
+        elif minus < 0:
+            is_inc = False
+            if step > 0:
+                step *= -1
+        if minus != 0 and step != 0:
+            self.tweens.append({
+                "is_inc": is_inc,
+                "node": node,
+                "what": what,
+                "on_done": on_done,
+                "to_val": to_val,
+                "step": step
+            })
 
     def remove_tween(self, tween):
         if tween in self.tweens:
             self.tweens.remove(tween)
 
     def update_tween(self, tween):
-        if tween["type"] == "float":
-            value = self.get_attribute(tween["node"], tween["what"])
-            sum = value + tween["step"]
-            new_value = sum
-            if sum == tween["to_val"]:
-                new_value = tween["to_val"]
-                if tween["on_done"]:
-                    tween["on_done"](tween["node"])
-                self.remove_tween(tween)
-            self.set_attribute(tween["node"], tween["what"], new_value)
+        value = self.get_attribute(tween["node"], tween["what"])
+        sum = value + tween["step"]
+        new_value = sum
+
+        if (tween["is_inc"] and sum >= tween["to_val"]) or (not tween["is_inc"] and sum <= tween["to_val"]):
+            new_value = tween["to_val"]
+            if tween["on_done"]:
+                tween["on_done"](tween["node"])
+            self.remove_tween(tween)
+
+        self.set_attribute(tween["node"], tween["what"], new_value)
 
 
 class DrawFuncs:

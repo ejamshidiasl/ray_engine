@@ -4,14 +4,12 @@ from ray_engine import *
 
 def node1_update(node: Node, dt: float):
     if is_key_pressed(KeyboardKey.KEY_S):
-        scene.add_tween_float(node, "size.x", 300, 2, on_done)
+        scene.add_tween(node, "size.x", 200, 0.758985, on_done)
 
 
 def on_done(node: Node):
-    scene.add_tween_float(node, "pos.x", 0, -1)
-    scene.add_tween_float(node, "pos.y", 0, -1)
-
-
+    print("done")
+    
 init_window(600, 600, "ray_engine test")
 set_target_fps(60)
 
