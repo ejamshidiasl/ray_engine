@@ -2,7 +2,7 @@
 <br>
 ⚡ The engine is progressing at a high pace with great energy
 <br>
-ℹ️ Current version: `1.1`
+ℹ️ Current version: `1.1.(working on it)`
 
 # ray_engine
 <p align="center">
@@ -29,6 +29,9 @@ ray_engine is a fresh, innovative graphics library designed to be the **easiest*
 
 - **Smooth Node Movement**:
     - Functions for forward movement, look-at behavior, follow position and transitions.
+
+- **Tween System**:
+    - Add tween to any variable in a node to animate it. (now just float tween but soon other types will be added)
 
 - **Extensibility**:
     - Easily register new draw or update functions.
