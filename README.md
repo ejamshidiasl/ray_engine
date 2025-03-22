@@ -2,10 +2,12 @@
 <br>
 ⚡ The engine is progressing at a high pace with great energy
 <br>
-ℹ️ Current version: `1.0`
+ℹ️ Current version: `1.1`
 
 # ray_engine
-ray_engine is a fresh, innovative graphics library designed to be the **easiest**, **most enjoyable**, and **highly performant** tool for developers. Whether you're a game developer, software designer, or machine learning enthusiast, ray_engine offers versatility and power to bring your ideas to life effortlessly.
+
+| <img src="ray_engine_128.jpg" style="min-width:128px"/> | ray_engine is a fresh, innovative graphics library designed to be the **easiest**, **most enjoyable**, and **highly performant** tool for developers. Whether you're a game developer, software designer, or machine learning enthusiast, ray_engine offers versatility and power to bring your ideas to life effortlessly. |
+---|---
 
 ## Key Features
 - **Node-Based Architecture**:
@@ -114,7 +116,7 @@ close_window()
 TODO
 
 ## Custom Draw Functions
-Currently, in version `1.0`, we only have two drawing functions: one for rectangles and one for circles. More functions will be added soon. Meanwhile, you can create custom functions as follows:
+Currently, in version `1.1`, we have 4 drawing functions: `draw_rectangle`, `draw_circle`, `draw_line`, `draw_texture`. More functions will be added soon. Meanwhile, you can create custom functions as follows:
 ```python
 def custom_draw(node: Node):
     draw_rectangle_pro(

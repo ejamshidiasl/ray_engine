@@ -1,6 +1,5 @@
 # Main Developer: Esmail Jamshidiasl (NNE)
 # Github: https://github.com/ejamshidiasl/ray_engine
-# Version: 1.0
 # License: MIT
 
 
@@ -11,7 +10,7 @@ import uuid
 
 
 class Node:
-    def __init__(self, draw_fn=None, update_fn=None, pos=None, rot=0, scale=None, origin=None, size=None, color=None, name="New Node", tag="", order=0):
+    def __init__(self, draw_fn=None, update_fn=None, texture=None, pos=None, rot=0, scale=None, origin=None, size=None, to=None, tickness=1, color=None, name="New Node", tag="", order=0):
         self.uuid = str(uuid.uuid4())
         self.name = name
         self.tag = tag
@@ -24,7 +23,10 @@ class Node:
         self.scale = scale if scale else Vector2(1, 1)
         self.origin = origin if origin else Vector2(0.5, 0.5)
         self.size = size if size else Vector2(100, 50)
-        self.color = color if color else Color(255, 0, 0, 255)
+        self.color = color if color else Color(255, 255, 255, 255)
+        self.to = to if to else Vector2(0, 0)
+        self.tickness = tickness
+        self.texture = texture
 
         self.global_pos = Vector2(self.pos.x, self.pos.y)
         self.global_rot = self.rot
@@ -49,9 +51,9 @@ class Node:
 
     def _update_global_transform(self):
         """DO NOT CALL THIS FUNCTION. FOR-DEVS: Update and store global pos, rot, and scale."""
+
         if self.parent is None:
-            self.global_pos = Vector2(
-                self.pos.x, self.pos.y)
+            self.global_pos = Vector2(self.pos.x, self.pos.y)
             self.global_rot = self.rot
             self.global_scale = Vector2(self.scale.x, self.scale.y)
         else:
@@ -337,8 +339,7 @@ class DrawFuncs:
             Rectangle(
                 node.global_pos.x,
                 node.global_pos.y,
-                node.size.x *
-                node.global_scale.x,
+                node.size.x * node.global_scale.x,
                 node.size.y * node.global_scale.y
             ),
             Vector2(
@@ -359,3 +360,40 @@ class DrawFuncs:
             int(radius),
             node.color
         )
+
+    @staticmethod
+    def draw_line(node: Node):
+        """Draw a line using the Node object."""
+        draw_line_ex(
+            node.global_pos,
+            node.to,
+            node.tickness,
+            node.color
+        )
+
+    @staticmethod
+    def draw_texture(node: Node):
+        """Draw a texture using the Node object."""
+        pos = node.global_pos
+        if node.texture:
+            draw_texture_pro(
+                node.texture,
+                Rectangle(
+                    0,
+                    0,
+                    node.texture.width,
+                    node.texture.height,
+                ),
+                Rectangle(
+                    pos.x,
+                    pos.y,
+                    node.size.x * node.global_scale.x,
+                    node.size.y * node.global_scale.y
+                ),
+                Vector2(
+                    node.origin.x * node.size.x * node.global_scale.x,
+                    node.origin.y * node.size.y * node.global_scale.y
+                ),
+                node.global_rot,
+                node.color
+            )
