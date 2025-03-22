@@ -5,9 +5,9 @@
 ℹ️ Current version: `1.1`
 
 # ray_engine
-<div style="width=100%;text-align:center">
+<p align="center">
 <img src="ray_engine_128.jpg" style="min-width:128px" />
-</div>
+</p>
 
 ray_engine is a fresh, innovative graphics library designed to be the **easiest**, **most enjoyable**, and **highly performant** tool for developers. Whether you're a game developer, software designer, or machine learning enthusiast, ray_engine offers versatility and power to bring your ideas to life effortlessly.
 
