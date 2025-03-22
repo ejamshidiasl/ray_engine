@@ -9,26 +9,30 @@
 <img src="ray_engine_128.jpg" style="min-width:128px" />
 </p>
 
-ray_engine is a fresh, innovative graphics library designed to be the **easiest**, **most enjoyable**, and **highly performant** tool for developers. Whether you're a game developer, software designer, or machine learning enthusiast, ray_engine offers versatility and power to bring your ideas to life effortlessly.
+ray_engine is a fresh, innovative graphics library designed to be the **easiest**, **most enjoyable**, and **highly performant** tool for developers. Whether you're a game developer, software designer, or machine learning enthusiast, ray_engine offers versatility and power to bring your ideas to life effortlessly. It is a very higher level for latest version of `RayLib` and make graphical apps and games more fun.
+
+**Birth Date: March 21,2025**
 
 ## Key Features
 - **Node-Based Architecture**:
-    - Manage hierarchical node relationships with ease (parent-child structure).
-    - Transform properties such as position, rotation, scale, and origin.
+    - Parent-children relationships.
+    - Draw order (layering system).
+    - Controlable visibility and disabling nodes.
 
 - **Scene Management**:
     - Support for dynamic scene updates and rendering.
-    - Serialize and deserialize scenes seamlessly via JSON.
+    - Save and load scenes (ready to convert scene from drag and drop softwares) with serialize and deserialize scenes seamlessly via JSON.
 
 - **Custom Updates and Drawing**:
     - Assign user-defined update_fn for dynamic behaviors.
-    - Built-in support for custom drawing functions (draw_rectangle, draw_circle).
+    - Built-in support for custom drawing functions.
 
 - **Smooth Node Movement**:
-    - Functions for forward movement, look-at behavior, and position transitions.
+    - Functions for forward movement, look-at behavior, follow position and transitions.
 
 - **Extensibility**:
     - Easily register new draw or update functions.
+    - Easy method for adding components.
 
 ## Getting Started & Installation
 First install raylib using `pip install raylib` then
